@@ -1,7 +1,11 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import theme from '../theme';
+import { Link, Navigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'space-between'
+  },
   text: {
     color: theme.colors.textBar,
     fontSize: theme.fontSizes.heading,
@@ -9,12 +13,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppBarTab = ({ onPress, children }) => (
-  <Pressable>
-    <Text onPress={onPress} style={styles.text}>
-      {children}
-    </Text>
-  </Pressable>
+const AppBarTab = ({ link, children }) => (
+  <Link to={link}>
+    <Text style={styles.text}>{children}</Text>
+  </Link>
 );
 
 export default AppBarTab;
