@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import theme from '../theme';
 import Button from './Button';
 import LargeInput from './LargeInput';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,14 +13,39 @@ const styles = StyleSheet.create({
   }
 });
 
-const handleSubmit = () => {};
+const onSubmit = () => {
+  alert('login allowed');
+};
+
+const validationSchema = yup.object().shape({
+  username: yup.string().required().min(3),
+  password: yup.string().required().min(3)
+});
+
+const initialValues = { username: '', password: '' };
 
 const SignIn = () => {
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit
+  });
   return (
     <View style={styles.container}>
-      <LargeInput placeholder="Username" />
-      <LargeInput placeholder="Password" secureTextEntry />
-      <Button onPress={handleSubmit} />
+      <LargeInput
+        placeholder="Username"
+        value={formik.values.username}
+        onChangeText={formik.handleChange('username')}
+        error={formik.touched.username && formik.errors.username}
+      />
+      <LargeInput
+        placeholder="Password"
+        secureTextEntry
+        value={formik.values.password}
+        onChangeText={formik.handleChange('password')}
+        error={formik.touched.password && formik.errors.password}
+      />
+      <Button onPress={formik.handleSubmit} />
     </View>
   );
 };

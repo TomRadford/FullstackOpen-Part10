@@ -7,7 +7,8 @@ const theme = {
     primary: '#0366d6',
     bar: '#24292e',
     bgPrimary: '#e1e4e8',
-    bgSecondary: '#FFFFFF'
+    bgSecondary: '#FFFFFF',
+    error: '#d73a4a'
   },
   fontSizes: {
     body: 14,
