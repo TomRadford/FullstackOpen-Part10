@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     backgroundColor: theme.colors.bgPrimary
+  },
+  box: {
+    maxWidth: 1000,
+    alignSelf: 'stretch',
+    marginHorizontal: 'auto',
+    flexGrow: 1,
+    flexShrink: 1
   }
 });
 
@@ -17,12 +24,14 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <Routes>
-        <Route path="/" element={<RepositoryList />} />
-        <Route path="/login" element={<SignIn />} />
+      <View style={styles.box}>
+        <Routes>
+          <Route path="/" element={<RepositoryList />} />
+          <Route path="/login" element={<SignIn />} />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </View>
     </View>
   );
 };
