@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     justifyContent: 'space-between'
   },
-  scroll: { paddingLeft: 20, gap: 10 }
+  scroll: { paddingLeft: 20, gap: 20 }
 });
 
 const AppBar = () => {
@@ -23,7 +23,7 @@ const AppBar = () => {
         showsHorizontalScrollIndicator={false}
       >
         <AppBarTab link={'/'}>Repositories</AppBarTab>
-        <AppBarTab link={'/login'}>Login</AppBarTab>
+        <AppBarTab link={'/login'}>Sign In</AppBarTab>
       </ScrollView>
     </View>
   );
