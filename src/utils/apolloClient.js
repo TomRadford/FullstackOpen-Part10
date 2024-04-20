@@ -1,8 +1,9 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import constants from 'expo-constants';
 
 const createApolloClient = () => {
   return new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: constants.expoConfig.extra.uri,
     cache: new InMemoryCache(),
     defaultOptions: { query: { fetchPolicy: 'cache-and-network' } }
   });
