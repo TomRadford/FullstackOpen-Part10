@@ -4,6 +4,7 @@ import Button from './Button';
 import LargeInput from './LargeInput';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import useSignIn from '../hooks/useSignIn';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,10 +14,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const onSubmit = () => {
-  alert('login allowed');
-};
-
 const validationSchema = yup.object().shape({
   username: yup.string().required().min(3),
   password: yup.string().required().min(3)
@@ -25,11 +22,23 @@ const validationSchema = yup.object().shape({
 const initialValues = { username: '', password: '' };
 
 const SignIn = () => {
+  const [signIn] = useSignIn();
+
+  const onSubmit = async ({ username, password }) => {
+    try {
+      const { data } = await signIn({ username, password });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit
   });
+
   return (
     <View style={styles.container}>
       <LargeInput
