@@ -23,6 +23,7 @@ const LargeInput = ({ placeholder, value, onChangeText, secureTextEntry = false,
       style={{ ...styles.input, ...(error.length ? styles.inputError : {}) }}
       placeholder={placeholder}
       value={value}
+      autoCapitalize="none"
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
     />

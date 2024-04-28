@@ -13,10 +13,21 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppBarTab = ({ link, children }) => (
-  <Link to={link}>
-    <Text style={styles.text}>{children}</Text>
-  </Link>
-);
+const AppBarTab = ({ link, onClick, children }) => {
+  if (onClick) {
+    return (
+      <Pressable onPress={onClick}>
+        <Text style={styles.text}>{children}</Text>
+      </Pressable>
+    );
+  }
+  if (link) {
+    return (
+      <Link to={link}>
+        <Text style={styles.text}>{children}</Text>
+      </Link>
+    );
+  }
+};
 
 export default AppBarTab;
